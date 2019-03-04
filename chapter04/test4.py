@@ -15,8 +15,8 @@ LEARNING_RATE_STEP = 1  # 运行多少轮后，更新一次学习率，一般设
 global_step = tf.Variable(0, trainable=False)
 
 # 定义指数下降学习率
-learning_rate = tf.train.exponential_decay(LEARNING_RATE_BASE, global_step,LEARNING_RATE_STEP,
-                                           LEARNING_RATE_DECAY,staircase=True)
+learning_rate = tf.train.exponential_decay(LEARNING_RATE_BASE, global_step, LEARNING_RATE_STEP,
+                                           LEARNING_RATE_DECAY, staircase=True)
 
 # 定义待优化参数w，赋初值为5
 w = tf.Variable(tf.constant(10, dtype=tf.float32))
@@ -38,4 +38,5 @@ with tf.Session() as sess:
         w_val = sess.run(w)
         loss_val = sess.run(loss)
         print("After %s steps:global_step is %f, w is %f, learning_rate is %f,loss is %f." % (i, global_step_val, w_val,
-                                                                                              learning_rate_val,loss_val))
+                                                                                              learning_rate_val,
+                                                                                              loss_val))
